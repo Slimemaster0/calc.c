@@ -1,3 +1,4 @@
 #!/bin/sh
-gcc ./calc.c -o calc
-gcc ./sh.c -o sh
+mkdir build
+gcc ./calc.c -o build/calc
+gcc ./sh.c -o build/sh
