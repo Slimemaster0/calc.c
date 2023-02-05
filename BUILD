@@ -1,4 +1,4 @@
 #!/bin/sh
-mkdir build
+mkdir -p build
 gcc ./calc.c -o build/calc
 gcc ./sh.c -o build/sh
