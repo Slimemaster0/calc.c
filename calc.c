@@ -36,7 +36,7 @@ float str2Num(char str[]) {
 	    }
 	    point++;
 	}
-
+	
 	if (str[0] !='-') {
 	    num += carrentNum;
 	} else {

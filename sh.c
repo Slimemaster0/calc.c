@@ -8,8 +8,6 @@ char changeDir(char cmd[100]) {
     strcpy(command, cmd);
     strtok(command, " ");
     
-    
-
     if (strcmp(command, "cd") == 0) {
 	char *pathPtr = command;
 	pathPtr += 3;
