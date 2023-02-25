@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
-#include "colors.h"
 #include <stdlib.h>
+#include "colors.h"
 
 int main(int argc, char *argv[]) {
     char mode = 0;
@@ -29,6 +29,10 @@ int main(int argc, char *argv[]) {
 	if (ignoreLine == i) { continue; }
 
 	fptr = fopen(argv[i], "r");
+	if (fptr == NULL) {
+	    printf("%sERR:%s cant find file %s\n", ANSI_COLOR_RED, ANSI_COLOR_RESET, argv[i]);
+	    exit(1);
+	}
 
 	size_t len;
 	if (mode == 0 | mode == 1) {
