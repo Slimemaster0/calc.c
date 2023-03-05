@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 #include <dirent.h>
 #include <unistd.h>
 #include "colors.h"
@@ -6,6 +7,13 @@
 #define BUF_SIZE 256
 
 int main(int argc, char *argv[]) {
+    char showHidden = 0;
+    for (int i = 1; i < argc; i++) {
+	if (strcmp(argv[i], "-a") == 0) {
+	    showHidden = 1;
+	}
+    }
+
     struct dirent *pDirent;
     char path[BUF_SIZE] = "\0";
 
@@ -20,7 +28,10 @@ int main(int argc, char *argv[]) {
     }
 
     while ((pDirent = readdir(dirP)) != NULL) { // Print the files
-	printf("%s\n", pDirent->d_name);
+	char *fname = strdup(pDirent->d_name);
+	if (fname[0] != '.' || showHidden >= 1) {
+		printf("%s\n", fname);
+	}
     }
 
     return 0;
